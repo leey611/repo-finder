@@ -10,11 +10,12 @@ const Search = ({searchForm, onChange, onSubmit}) => {
                placeholder="Enter a repo name"
                value={searchForm.name}
                onChange={onChange}
+               aria-label="name"
                required />
 
         
         <label>Sort By</label>
-        <select name="sorting" id="sorting" value={searchForm.sorting} onChange={onChange}>
+        <select name="sorting" id="sorting" value={searchForm.sorting} onChange={onChange} aria-label="sorting">
           <option value="stars">stars</option>
           <option value="forks">forks</option>
           <option value="help-wanted-issues">help-wanted-issues</option>
