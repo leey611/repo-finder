@@ -31,7 +31,7 @@ const Repos = ({ loading, repos }) => {
   const { pageIndex } = state // pageIndex starts from 0
 
   if (loading) {
-    return <div>Loading</div>
+    return <div className="text-center">Loading</div>
   } else {
     return (
       <>

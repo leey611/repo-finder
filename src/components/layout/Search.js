@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Search = ({searchForm, onChange, onSubmit}) => {
+const Search = ({searchForm, onChange, onSubmit, error}) => {
   return (
     <div className="pt-3 pb-3">
       <form onSubmit={onSubmit}>
@@ -11,8 +11,7 @@ const Search = ({searchForm, onChange, onSubmit}) => {
                placeholder="Enter a repo name"
                value={searchForm.name}
                onChange={onChange}
-               aria-label="name"
-               required />
+               aria-label="name" />
 
         
         <label>Sort By</label>
@@ -24,6 +23,7 @@ const Search = ({searchForm, onChange, onSubmit}) => {
         </select>
         
         <input type="submit" value="Search" className="d-block m-auto btn btn-info"/>
+        {error && <div className="mt-3 alert alert-warning">Please enter a repo name</div>}
       </form>
     </div>
   )
