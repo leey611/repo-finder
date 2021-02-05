@@ -4,6 +4,17 @@ import axios from 'axios'
 import Search from './components/layout/Search'
 import Repos from './components/layout/Repos'
 
+let githubClientId;
+let githubClientSecret;
+
+if (process.env.NODE_ENV !== 'production') {
+  githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+} else {
+  githubClientId = process.env.GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+}
+
 
 function App() {
   const [loading, setLoading] = useState(false)
@@ -31,9 +42,8 @@ function App() {
         const baseURL = `https://api.github.com/search/repositories?`
         const queryString = `q=` +
                         encodeURIComponent(`${searchForm.name} in:name`) +
-                       `&sort=${searchForm.sorting}&per_page=100`;
+          `&sort=${searchForm.sorting}&per_page=100&client_id=${githubClientId}&${githubClientSecret}`;
         
-        console.log(queryString)
         const response = await axios.get(`${baseURL}${queryString}`)
         const repo_items = response.data.items
         setRepos(repo_items)

@@ -66,11 +66,11 @@ const Repos = ({ loading, repos }) => {
           <div id="pagination" className="text-center pt-3 pb-3">
             {pageOptions.length ? <>
               <div>Page {pageIndex + 1}/{pageOptions.length}</div>
-              <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
+              {canPreviousPage && <button onClick={() => previousPage()}>Previous</button>}
               {pageOptions.map(i => <button
                 key={i}
                 onClick={() => gotoPage(i)}>{i + 1}</button>)}
-              <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
+              {canNextPage && <button onClick={()=> nextPage()}>Next</button>}
             </> : <div>No Results</div>}
           </div>
         </>}
