@@ -17,6 +17,20 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color:#17a2b8;
   color: white;
+}
+
+#pagination > button {
+  border: none;
+  /* color: white; */
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* font-size: 16px; */
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #e7e7e7;
+  color: black;
 }

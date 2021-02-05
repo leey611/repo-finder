@@ -31,13 +31,11 @@ function App() {
         queryString += encodeURIComponent(`${searchForm.name} in:name`) + '&';
       }
       queryString += `&sort=${searchForm.sorting}&per_page=100`
-      //queryString += `language:${searchForm.language}&sort=${searchForm.sorting}&per_page=100`
+      
       console.log(queryString)
-      //queryString += encodeURIComponent(`${language} in:name`);
       const response = await axios.get(`${baseURL}${queryString}`)
       const repo_items = response.data.items
-      // filter to make sure the items match the intended language
-      //repo_items = repo_items.filter(item => item.language === searchForm.language)
+      
       setRepos(repo_items)
       setLoading(false)
       console.log(repo_items)
@@ -51,8 +49,10 @@ function App() {
 
   return (
     <div className="App">
-      <Search searchForm={searchForm} onChange={onChange} onSubmit={getRepos} />
-      <Repos loading={loading} repos={repos}/>
+      <div className="container">
+        <Search searchForm={searchForm} onChange={onChange} onSubmit={getRepos} />
+        <Repos loading={loading} repos={repos} />
+      </div>
     </div>
   );
 }

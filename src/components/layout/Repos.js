@@ -63,7 +63,7 @@ const Repos = ({ loading, repos }) => {
               })}
             </tbody>
           </table>
-          <div>
+          <div id="pagination" className="text-center pt-3 pb-3">
             {pageOptions.length ? <>
               <div>Page {pageIndex + 1}/{pageOptions.length}</div>
               <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
