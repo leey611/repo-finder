@@ -42,7 +42,7 @@ function App() {
         const baseURL = `https://api.github.com/search/repositories?`
         const queryString = `q=` +
                         encodeURIComponent(`${searchForm.name} in:name`) +
-          `&sort=${searchForm.sorting}&per_page=100`;
+                        `&sort=${searchForm.sorting}&per_page=100`;
         
         const response = await axios.get(`${baseURL}${queryString}`, {
           headers: {
