@@ -42,9 +42,13 @@ function App() {
         const baseURL = `https://api.github.com/search/repositories?`
         const queryString = `q=` +
                         encodeURIComponent(`${searchForm.name} in:name`) +
-          `&sort=${searchForm.sorting}&per_page=100&client_id=${githubClientId}&${githubClientSecret}`;
+          `&sort=${searchForm.sorting}&per_page=100`;
         
-        const response = await axios.get(`${baseURL}${queryString}`)
+        const response = await axios.get(`${baseURL}${queryString}`, {
+          headers: {
+            'Authorization': `${githubClientId}`
+          }
+        })
         const repo_items = response.data.items
         setRepos(repo_items)
         setLoading(false)
